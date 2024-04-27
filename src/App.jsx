@@ -12,27 +12,13 @@ export default function App() {
 
   const [car, setCar] = useState(defaultCar);
 
-  function handleChangeBrand(event) {
-    return setCar((previousState) => {
-      return { ...previousState, brand: event.target.value };
-    });
+  function getKeyFromObject(obj, index) {
+    return Object.keys(obj)[index];
   }
 
-  function handleChangeModel(event) {
+  function handleChange(event) {
     return setCar((previousState) => {
-      return { ...previousState, model: event.target.value };
-    });
-  }
-
-  function handleChangeYear(event) {
-    return setCar((previousState) => {
-      return { ...previousState, year: event.target.value };
-    });
-  }
-
-  function handleChangeColor(event) {
-    return setCar((previousState) => {
-      return { ...previousState, color: event.target.value };
+      return { ...previousState, [event.target.id]: event.target.value };
     });
   }
 
@@ -53,58 +39,70 @@ export default function App() {
 
           <div className="px-10">
             <div className="mb-2">
-              <label className="text-white" htmlFor="brand">
+              <label
+                className="text-white"
+                htmlFor={getKeyFromObject(defaultCar, 0)}
+              >
                 Brand :{" "}
               </label>
               <input
                 className="px-2 py-1"
                 type="text"
-                name="brand"
-                id="brand"
-                placeholder="Brand"
-                onChange={handleChangeBrand}
+                name={getKeyFromObject(defaultCar, 0)}
+                id={getKeyFromObject(defaultCar, 0)}
+                placeholder={getKeyFromObject(defaultCar, 0)}
+                onChange={handleChange}
                 value={car.brand || ""}
               />
             </div>
             <div className="mb-2">
-              <label className="text-white" htmlFor="model">
+              <label
+                className="text-white"
+                htmlFor={getKeyFromObject(defaultCar, 1)}
+              >
                 Model :{" "}
               </label>
               <input
                 className="px-2 py-1"
                 type="text"
-                name="model"
-                id="model"
-                placeholder="Model"
-                onChange={handleChangeModel}
+                name={getKeyFromObject(defaultCar, 1)}
+                id={getKeyFromObject(defaultCar, 1)}
+                placeholder={getKeyFromObject(defaultCar, 1)}
+                onChange={handleChange}
                 value={car.model || ""}
               />
             </div>
             <div className="mb-2">
-              <label className="text-white" htmlFor="year">
+              <label
+                className="text-white"
+                htmlFor={getKeyFromObject(defaultCar, 2)}
+              >
                 Year :{" "}
               </label>
               <input
                 className="px-2 py-1"
                 type="text"
-                name="year"
-                id="year"
-                placeholder="Year"
-                onChange={handleChangeYear}
+                name={getKeyFromObject(defaultCar, 2)}
+                id={getKeyFromObject(defaultCar, 2)}
+                placeholder={getKeyFromObject(defaultCar, 2)}
+                onChange={handleChange}
                 value={car.year || ""}
               />
             </div>
             <div className="mb-2">
-              <label className="text-white" htmlFor="color">
+              <label
+                className="text-white"
+                htmlFor={getKeyFromObject(defaultCar, 3)}
+              >
                 Color :{" "}
               </label>
               <input
                 className="px-2 py-1"
                 type="text"
-                name="color"
-                id="color"
-                placeholder="Color"
-                onChange={handleChangeColor}
+                name={getKeyFromObject(defaultCar, 3)}
+                id={getKeyFromObject(defaultCar, 3)}
+                placeholder={getKeyFromObject(defaultCar, 3)}
+                onChange={handleChange}
                 value={car.color || ""}
               />
             </div>
